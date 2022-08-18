@@ -77,7 +77,7 @@ class QuizCardBuilder {
             //Добавляем текущую карточку в список и очищаем текстовые области
             QuizCard card = new QuizCard(question.getText(), answer.getText());
             cardList.add(card);
-            //clearCard();
+            clearCard();
         }
     }
 
@@ -100,10 +100,15 @@ class QuizCardBuilder {
             //Очищаем список карточек и текстовые облости. 
             //Запускается при нажатии New из меню.
             cardList.clear();
-            //clearCard();
+            clearCard();
         }
     }
 
+    private void clearCard() {
+        question.setText("");
+        answer.setText("");
+        question.requestFocus();
+    }
 
 
     private void SaveFile(File file) {
