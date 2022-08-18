@@ -7,7 +7,7 @@ import java.util.*;
 class QuizCardBuilder {
     private JTextArea question;
     private JTextArea answer;
-    //private ArrayList<QuizCard> cardList;
+    private ArrayList<QuizCard> cardList;
     private JFrame frame;
 
     public static void main(String args[]) {
@@ -36,13 +36,13 @@ class QuizCardBuilder {
         answer.setWrapStyleWord(true);
         answer.setFont(bigFont);
 
-        JScrollPane aScroller = new JScrollPane(question);
+        JScrollPane aScroller = new JScrollPane(answer);
         aScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         aScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         JButton nextButton = new JButton("Next Card");
 
-        //cardList = new ArrayList<QuizCard>();
+        cardList = new ArrayList<QuizCard>();
 
         JLabel qLabel = new JLabel("Question:");
         JLabel aLabel = new JLabel("Answer:");
@@ -75,6 +75,9 @@ class QuizCardBuilder {
         public void actionPerformed(ActionEvent ev) {
             //Слушатель срабатывает при нажатии пользователя на кнопку nextCard
             //Добавляем текущую карточку в список и очищаем текстовые области
+            QuizCard card = new QuizCard(question.getText(), answer.getText());
+            cardList.add(card);
+            clearCard();
         }
     }
 
