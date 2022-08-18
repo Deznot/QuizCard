@@ -114,5 +114,18 @@ class QuizCardBuilder {
     private void SaveFile(File file) {
         //Вызывается классом SaveMenuListener
         //Проходим по списку карточек и записываем каждый элемент в текстовый файл, который потом можно будет прочесть.
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+            for (QuizCard card : cardList) {
+                writer.write(card.getQuestion() + "/");
+                writer.write(card.getAnswer() + "\n");
+            }
+            writer.close();
+
+        } catch (IOException ex) {
+            System.out.println("couldn't write the cardList out");
+            ex.printStackTrace();
+        }
     }
 }
