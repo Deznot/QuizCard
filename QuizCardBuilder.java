@@ -77,7 +77,7 @@ class QuizCardBuilder {
             //Добавляем текущую карточку в список и очищаем текстовые области
             QuizCard card = new QuizCard(question.getText(), answer.getText());
             cardList.add(card);
-            clearCard();
+            //clearCard();
         }
     }
 
@@ -86,6 +86,12 @@ class QuizCardBuilder {
             //Вызываем диалоговое окно позволяющее пользователю называть и сохранять набор.
             //Запускается при выборе Save из меню. Озн. что пользователь хочет сохранить все карточки в текущем списке
             //ввиде набора ex. Набор английских слов..
+            QuizCard card = new QuizCard(question.getText(), answer.getText());
+            cardList.add(card);
+            
+            JFileChooser fileSave = new JFileChooser();
+            fileSave.showSaveDialog(frame);
+            SaveFile(fileSave.getSelectedFile());
         }
     }
     
