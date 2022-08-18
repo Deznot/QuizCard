@@ -71,7 +71,7 @@ class QuizCardBuilder {
 
     }
 
-    private class NextCardListener implements ActionListener {
+    public class NextCardListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             //Слушатель срабатывает при нажатии пользователя на кнопку nextCard
             //Добавляем текущую карточку в список и очищаем текстовые области
@@ -81,7 +81,7 @@ class QuizCardBuilder {
         }
     }
 
-    private class SaveMenuListener implements ActionListener {
+    public class SaveMenuListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             //Вызываем диалоговое окно позволяющее пользователю называть и сохранять набор.
             //Запускается при выборе Save из меню. Озн. что пользователь хочет сохранить все карточки в текущем списке
@@ -95,12 +95,16 @@ class QuizCardBuilder {
         }
     }
     
-    private class NewMenuListener implements ActionListener {
+    public class NewMenuListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             //Очищаем список карточек и текстовые облости. 
             //Запускается при нажатии New из меню.
+            cardList.clear();
+            //clearCard();
         }
     }
+
+
 
     private void SaveFile(File file) {
         //Вызывается классом SaveMenuListener
