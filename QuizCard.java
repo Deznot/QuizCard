@@ -7,7 +7,7 @@ public class QuizCard {
     }
 
     public String getQuestion() {
-       return this.question;
+        return this.question;
     }
 
     public String getAnswer() {
