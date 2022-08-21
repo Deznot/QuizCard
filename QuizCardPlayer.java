@@ -8,7 +8,11 @@ public class QuizCardPlayer {
     private JFrame frame;
     private JTextArea display;
     private JTextArea answer;
+    private ArrayList<QuizCard> cardList;
     private JButton nextButton;
+    private boolean isShowAnswer;
+    private QuizCard currentCard;
+    private int currentCardIndex = 0;
 
     public static void main (String[] args) {
         QuizCardPlayer reader = new QuizCardPlayer();
@@ -52,6 +56,21 @@ public class QuizCardPlayer {
         public void actionPerformed(ActionEvent ev) {
             //Если это вопрос, показываем ответ, иначе показываем следующий вопрос.
             //Устанавливаем флаг для того, что мы видим, - вопрос это или ответ.
+            if (isShowAnswer) {
+                //показываем ответ, т.к. вопрос уже был показан
+                display.setText(currentCard.getAnswer());
+                nextButton.setText("Next Card");
+                isShowAnswer = false;
+            } else {
+                //показываем следующий вопрос
+                if (currentCardIndex < cardList.size()) {
+                    showNextCard();
+                } else {
+                    //Больше карточек нет
+                    display.setText("That was last card");
+                    nextButton.setEnabled(false);
+                }
+            }
         }
     }
 
