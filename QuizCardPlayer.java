@@ -106,6 +106,10 @@ public class QuizCardPlayer {
         /*Вызывается методом loadFile, берет строку из текстового файла, делит ее на две части - вопрос и ответ,
         и создает новый объект QuizCard, а затем добавляет его в ArrayList при помощи CardList.
         */
+        String[] result = LineToParse.split("/");
+        QuizCard card = new QuizCard(result[0],result[1]);
+        cardList.add(card);
+        System.out.println("Made a card");
     }
 
     private void showNextCard() {
