@@ -87,14 +87,29 @@ public class QuizCardPlayer {
         /*Cоздает ArrayList с карточками, считывая их из текстового файла вызванного из обработчика событий класса
         OpenMenuListener, читает файл по одной строке за раз и вызывает метод MakeCard() для создания новой карточки из строки
         (одна строка файла содержит вопрос и ответ разделенные символом /)
-
         */
+        cardList = new ArrayList<QuizCard>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                makeCard(line);
+            }
+            reader.close();
+        } catch(Exception ex) {
+            System.out.println("Couldn't read the card file");
+            ex.printStackTrace();
+        }
     }
 
     private void makeCard (String LineToParse) {
         /*Вызывается методом loadFile, берет строку из текстового файла, делит ее на две части - вопрос и ответ,
         и создает новый объект QuizCard, а затем добавляет его в ArrayList при помощи CardList.
         */
+    }
+
+    private void showNextCard() {
+        //метод для отображения карт.
     }
 
 }
