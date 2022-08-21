@@ -1,17 +1,62 @@
+import java.util.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+
 public class QuizCardPlayer {
+    private JFrame frame;
+    private JTextArea display;
+    private JTextArea answer;
+    private JButton nextButton;
+
+    public static void main (String[] args) {
+        QuizCardPlayer reader = new QuizCardPlayer();
+        reader.go();
+    }
+
     public void go() {
         //формируем и выводим на экран GUI
+        frame = new JFrame("Quiz Card Player");
+        JPanel mainPanel = new JPanel();
+        Font bigFont = new Font("sanserif",Font.BOLD, 24);
+
+        display = new JTextArea(10,23);
+        display.setLineWrap(true);
+        display.setEditable(false);
+        display.setFont(bigFont);
+
+        JScrollPane qScroller = new JScrollPane(display);
+        qScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        nextButton = new JButton("Show Question");
+        mainPanel.add(qScroller);
+        mainPanel.add(nextButton);
+        nextButton.addActionListener(new NextCardListener());
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem loadMenuItem = new JMenuItem("Load card set");
+        loadMenuItem.addActionListener(new OpenMenuListener());
+        fileMenu.add(loadMenuItem);
+        menuBar.add(fileMenu);
+        frame.setJMenuBar(menuBar);
+        frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(640,500);
+        frame.setVisible(true);
     }
 
     class NextCardListener implements ActionListener {
-        public void ActionPerformed(ActionEvent ev) {
+        public void actionPerformed(ActionEvent ev) {
             //Если это вопрос, показываем ответ, иначе показываем следующий вопрос.
             //Устанавливаем флаг для того, что мы видим, - вопрос это или ответ.
         }
     }
 
     class OpenMenuListener implements ActionListener {
-        public void ActionPerformed(ActionEvent ev) {
+        public void actionPerformed(ActionEvent ev) {
             //Вызываем диалоговое окно, позволяющее пользователю выбрать какой набор карточек открыть
         }
     }
