@@ -77,6 +77,9 @@ public class QuizCardPlayer {
     class OpenMenuListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             //Вызываем диалоговое окно, позволяющее пользователю выбрать какой набор карточек открыть
+            JFileChooser fileOpen = new JFileChooser();
+            fileOpen.showOpenDialog(frame);
+            loadFile(fileOpen.getSelectedFile());
         }
     }
 
