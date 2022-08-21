@@ -25,7 +25,7 @@ public class QuizCardPlayer {
         JPanel mainPanel = new JPanel();
         Font bigFont = new Font("sanserif",Font.BOLD, 24);
 
-        display = new JTextArea(10,23);
+        display = new JTextArea(10,25);
         display.setLineWrap(true);
         display.setEditable(false);
         display.setFont(bigFont);
@@ -114,6 +114,11 @@ public class QuizCardPlayer {
 
     private void showNextCard() {
         //метод для отображения карт.
+        currentCard = cardList.get(currentCardIndex);
+        currentCardIndex++;
+        display.setText(currentCard.getQuestion());
+        nextButton.setText("Show Answer");
+        isShowAnswer = true;
     }
 
 }
